@@ -8,7 +8,12 @@ function Spinner() {
       <img
         src={spinner}
         alt='Loading...'
-        style={{ margin: 'auto', width: '200px', display: 'block' }}
+        style={{
+          width: '200px',
+          margin: 'auto',
+          display: 'block',
+          alignContent: 'center',
+        }}
       ></img>
     </Fragment>
   )

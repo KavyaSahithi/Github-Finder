@@ -4,19 +4,17 @@ import Spinner from '../layout/Spinner'
 import PropTypes from 'prop-types'
 
 function Users(props) {
-  return (
-    <div style={userStyle}>
-      {props.loading ? (
-        <Spinner />
-      ) : (
-        <>
-          {props.users.map((user) => (
-            <UserItem key={user.id} user={user} />
-          ))}
-        </>
-      )}
-    </div>
-  )
+  if (props.loading) {
+    return <Spinner />
+  } else {
+    return (
+      <div style={userStyle}>
+        {props.users.map((user) => (
+          <UserItem key={user.id} user={user} />
+        ))}
+      </div>
+    )
+  }
 }
 
 Users.propTypes = {
