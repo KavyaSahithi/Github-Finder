@@ -1,8 +1,15 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useContext } from 'react'
+import { GithubContext } from '../../context/GithubContext'
 
-function Submit({ clearUsers, showClear, setAlert, searchUsers }) {
+function Submit() {
   const [text, setText] = useState('')
+
+  const context = useContext(GithubContext)
+
+  let clearUsers = context.funcs.clearUsers
+  let showClear = context.values.users.length > 0 ? true : false
+  let setAlert = context.funcs.showAlert
+  let searchUsers = context.funcs.searchUsers
 
   const handleChange = (event) => {
     setText(event.target.value)
@@ -40,13 +47,6 @@ function Submit({ clearUsers, showClear, setAlert, searchUsers }) {
       )}
     </div>
   )
-}
-
-Submit.propTypes = {
-  searchUsers: PropTypes.func.isRequired,
-  clearUsers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired,
-  setAlert: PropTypes.func.isRequired,
 }
 
 export default Submit
